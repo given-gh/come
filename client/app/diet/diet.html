@@ -1,4 +1,4 @@
-<div class="data-table-container">
+<div class="data-table-container" ng-controller="dietCtrl as dc">
 	<header class="data-table-header">
 		<div class="data-table-header__label">
 			<span id="cm" class="fs-title">Прием пищи</span>
@@ -17,11 +17,8 @@
 				<th>Калории</th>
 			</tr>
 		</thead>
-		<tbody ng-init="meals = [
-			{date: '2015-08-08 7:30', name: 'Творог со сметаной', w: 200, proteins: 30, fats: 50, carbohydrates: 70, gi: 30, calories: 100},
-			{date: '2015-08-08 13:30', name: 'Борщ', w: 200, proteins: 30, fats: 70, carbohydrates: 100, gi: 50, calories: 300}
-		]">
-			<tr ng-repeat="row in meals">
+		<tbody>
+			<tr ng-repeat="row in dc.meals">
 				<td><span ng-bind="row.date"></span></td>
 				<td><span ng-bind="row.name"></span></td>
 				<td><span ng-bind="row.w"></span></td>

@@ -1,4 +1,4 @@
-<div class="data-table-container">
+<div class="data-table-container" ng-controller="weightingCtrl as wc">
 	<header class="data-table-header">
 		<div class="data-table-header__label">
 			<span id="w" class="fs-title">Взешивание</span>
@@ -11,11 +11,8 @@
 				<th>Масса, кг</th>
 			</tr>
 		</thead>
-		<tbody ng-init="weightings = [
-			{date: '2015-08-08 7:30', w: 85.3},
-			{date: '2015-08-09 7:30', w: 85.1}
-		]">
-			<tr ng-repeat="row in weightings">
+		<tbody>
+			<tr ng-repeat="row in wc.weightings">
 				<td><span ng-bind="row.date"></span></td>
 				<td><span ng-bind="row.w"></span></td>
 			</tr>
