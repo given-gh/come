@@ -2,6 +2,7 @@
 	<header class="data-table-header">
 		<div class="data-table-header__label">
 			<span id="cm" class="fs-title">Прием пищи</span>
+			<input type="checkbox" ng-model="dc.showDetails"/> Показывать детали
 		</div>
 	</header>
 	<table class="data-table">
@@ -10,22 +11,22 @@
 				<th>Дата и время</th>
 				<th>Наименование продукта</th>
 				<th>Вес, гр.</th>
-				<th>Белки</th>
-				<th>Жиры</th>
-				<th>Углеводы</th>
-				<th>ГИ</th>
+				<th ng-show="dc.showDetails">Белки</th>
+				<th ng-show="dc.showDetails">Жиры</th>
+				<th ng-show="dc.showDetails">Углеводы</th>
+				<th ng-show="dc.showDetails">ГИ</th>
 				<th>Калории</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="row in dc.meals">
-				<td><span ng-bind="row.date"></span></td>
+			<tr ng-repeat="row in dc.meals" ng-class="dc.evaluateMeal(row)">
+				<td><span ng-bind="row.date"></span><span ng-bind="row.time" ng-show="dc.showDetails"></span></td>
 				<td><span ng-bind="row.name"></span></td>
 				<td><span ng-bind="row.w"></span></td>
-				<td><span ng-bind="row.proteins"></span></td>
-				<td><span ng-bind="row.fats"></span></td>
-				<td><span ng-bind="row.carbohydrates"></span></td>
-				<td><span ng-bind="row.gi"></span></td>
+				<td ng-show="dc.showDetails"><span ng-bind="row.proteins"></span></td>
+				<td ng-show="dc.showDetails"><span ng-bind="row.fats"></span></td>
+				<td ng-show="dc.showDetails"><span ng-bind="row.carbohydrates"></span></td>
+				<td ng-show="dc.showDetails"><span ng-bind="row.gi"></span></td>
 				<td><span ng-bind="row.calories"></span></td>
 			</tr>
 		</tbody>

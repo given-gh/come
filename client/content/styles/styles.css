@@ -33,3 +33,15 @@ a {
 .site-footer {
   background: orange;
 }
+
+.bad {
+  color: #d50000;
+  font-weight: bold;
+}
+
+.normal {
+}
+
+.good {
+  color: #1b5e20;
+}

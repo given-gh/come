@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-																									<!--| 
-Активация приложения с помощью нестандартного атрибута ngApp 											| 2
-																										|-->
 <html ng-app="comeApp">
 
 <head>
@@ -11,44 +8,22 @@
     <link rel="stylesheet" type="text/css" href="client/content/styles/styles.css" />
 </head>
 
-<body>
-    																								<!--| 
-	Инициализация переменной templateUrl значением, содержащим путь к представлению "Питание",			| 4
-	с помощью нестандартного атрибута ngInit 															|-->
+<body ng-controller="MainCtrl as mc">
     
-    <div class="card" ng-init="templateUrl='client/app/diet/diet.html'">
-        <div class="toolbar">
-            <span class="toolbar__label fs-title">Lorem Ipsum</span>
-            <div class="toolbar__right">
-                <ul>
-                    <li class="nav fs-regular"><a href="#" ng-class="{active: templateUrl == 'client/app/diet/diet.html'}" ng-click="templateUrl = 'client/app/diet/diet.html'">Питание</a></li>
-                    <li class="nav fs-regular"><a href="#" ng-class="{active: templateUrl == 'client/app/weighting/weighting.html'}" ng-click="templateUrl = 'client/app/weighting/weighting.html'">Контроль веса</a></li>
-                    <li class="nav fs-regular"><a href="#" ng-class="{active: templateUrl == 'physicalActivity'}" ng-click="templateUrl = 'physicalActivity'">Физические нагрузки</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <div class="card" ng-include="'client/app/layout/header.html'"></div>
 
     <div class="content-wrap">
-	    																							<!--| 
-		Вставка в тэга div с помощью нестандартного атрибута ngInit фрагмента разметки, 				| 5
-		вынесенного отдельный HTML-файл, путь к которому хранится в переменной templateUrl 				|-->
-
-        <div class="card" ng-include="templateUrl"></div>
+        <div class="card" ng-include="mc.templateUrl"></div>
     </div>
-
-    																								<!--|
-	Вставка в тэга div фрагмента разметку, вынесенного в файл client/app/layout/footer.html,			| 3
-	с помощью нестандартного атрибута ngInclude 														|-->
-																									
+																						
     <div class="site-footer" ng-include="'client/app/layout/footer.html'"></div>
 
-    																								<!--|
-    Подключение фреймворка AngularJS. *.js  															| 1
-    																									|-->								
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
 
     <script src="client/app.js"></script>
+    <script src="client/app/layout/main.js"></script>
     <script src="client/app/diet/diet.js"></script>
     <script src="client/app/weighting/weighting.js"></script>
 </body>
