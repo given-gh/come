@@ -10,6 +10,12 @@
 		vm.rows = [];
 		vm.meals = [];
 		vm.showDetails = true;
+
+		vm.sortField = "date";
+		vm.reverse = false;
+
+		vm.sort = sort;
+
 		vm.evaluateMeal = evaluateMeal;
 
 		init();
@@ -99,6 +105,15 @@
 			}];
 
 			//vm.rows = vm.meals;
+		}
+
+		function sort(fieldName) {
+			if (vm.sortField === fieldName) {
+				vm.reverse = !vm.reverse;
+			} else {
+				vm.sortField = fieldName;
+				vm.reverse = false;
+			}		
 		}
 
 		function evaluateMeal(row) {
