@@ -6,11 +6,24 @@
 	function mainCtrl() {
 
 		var vm = this;
+		vm.currentYear = new Date().getFullYear();
 		vm.mode = "diet";
 		vm.templateUrl = "";
 		vm.toggleMode = toggleMode;
 
-		vm.toggleMode(vm.mode);
+		vm.loggedUser = {};
+
+		init();
+
+
+		function init() {
+			
+			vm.loggedUser = {
+				isAdmin: true
+			};
+
+			vm.toggleMode(vm.mode);
+		}
 
 		function toggleMode(mode) {
 			vm.mode = mode;

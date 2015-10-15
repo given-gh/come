@@ -13,7 +13,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="row in wc.weightings">
-				<td><span ng-bind="row.date"></span></td>
+				<td><span>{{($index + 1) + ". " + row.date}}</span></td>
 				<td><span ng-bind="row.w"></span></td>
 			</tr>
 		</tbody>
