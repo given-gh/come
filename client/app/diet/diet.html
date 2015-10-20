@@ -1,17 +1,12 @@
 <div ng-controller="dietCtrl as dc">
     <div flex-container="row">
-        <div class="card">
-            <div class="toolbar">
-                <span class="toolbar__label fs-title ml">Прием пищи</span>
-                <div class="toolbar__right">
-                    <button class="btn btn--l btn--black btn--icon" lx-ripple>
-                        <i class="mdi mdi-apps"></i>
-                    </button>
-                    <div class="checkbox">
-                        <input type="checkbox" id="checkbox1" ng-model="dc.showDetails" class="checkbox__input">
-                        <label for="checkbox1" class="checkbox__label">Показывать детали</label>
-                    </div>
-                    <lx-search-filter model="dc.filterByName" position="right" closed></lx-search-filter>
+        <div class="toolbar bgc-blue-900" style="width: 100%">
+            <span class="toolbar__label fs-title  tc-white-1 ml">Прием пищи</span>
+            <div class="toolbar__right">
+                <lx-search-filter model="dc.filterByName" position="right" theme="dark" filter-width="600px" closed placeholder="Поиск по наименованию продукта"></lx-search-filter>
+                <div class="checkbox">
+                    <input type="checkbox" id="checkbox1" ng-model="dc.showDetails" class="checkbox__input">
+                    <label for="checkbox1" class="checkbox__label  tc-white-1">Показывать детали</label>
                 </div>
             </div>
         </div>
@@ -21,14 +16,14 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th ng-click=dc.sort('date')>Дата и время</th>
-                    <th ng-click=dc.sort('name')>Наименование продукта</th>
-                    <th ng-click=dc.sort('w')>Вес, гр.</th>
-                    <th ng-click=dc.sort('proteins') ng-show="dc.showDetails">Белки</th>
-                    <th ng-click=dc.sort('fats') ng-show="dc.showDetails">Жиры</th>
-                    <th ng-click=dc.sort('carbohydrates') ng-show="dc.showDetails">Углеводы</th>
-                    <th ng-click=dc.sort('gi') ng-show="dc.showDetails">ГИ</th>
-                    <th ng-click=dc.sort('calories')>Калории</th>
+                    <th ng-click="dc.sort('date')">Дата и время</th>
+                    <th ng-click="dc.sort('name')">Наименование продукта</th>
+                    <th ng-click="dc.sort('w')">Вес, гр.</th>
+                    <th ng-click="dc.sort('proteins')" ng-show="dc.showDetails">Белки</th>
+                    <th ng-click="dc.sort('fats')" ng-show="dc.showDetails">Жиры</th>
+                    <th ng-click="dc.sort('carbohydrates')" ng-show="dc.showDetails">Углеводы</th>
+                    <th ng-click="dc.sort('gi')" ng-show="dc.showDetails">ГИ</th>
+                    <th ng-click="dc.sort('calories')">Калории</th>
                 </tr>
             </thead>
             <tbody>

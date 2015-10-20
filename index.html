@@ -10,7 +10,7 @@
 
 <body ng-controller="MainCtrl as mc">
     
-    <div class="card" ng-include="mc.loggedUser.isAdmin && 'client/app/layout/header.admin.html' || 'client/app/layout/header.html'"></div>
+    <div ng-include="mc.loggedUser.isAdmin && 'client/app/layout/header.admin.html' || 'client/app/layout/header.html'"></div>
 
     <div class="content-wrap">
         <div class="card" ng-include="mc.templateUrl"></div>

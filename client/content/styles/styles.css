@@ -11,7 +11,7 @@ a {
 
 .nav {
   display: inline-block;
-  margin: 5px 0;
+  margin: 0 3px;
 }
 
 .nav .active  {
