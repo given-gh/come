@@ -11,6 +11,7 @@
 		vm.meals = [];
 		vm.showDetails = true;
 
+		vm.filterByName = "";
 		vm.sortField = "date";
 		vm.reverse = false;
 

@@ -6,16 +6,16 @@ html, body {
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .nav {
-	display: inline-block;
-	margin: 5px 0;
+  display: inline-block;
+  margin: 5px 0;
 }
 
 .nav .active  {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .content-wrap {
@@ -44,4 +44,5 @@ a {
 
 .good {
   color: #1b5e20;
+  font-weight: 700;
 }

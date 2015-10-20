@@ -1,1 +1,1 @@
-angular.module("comeApp", []);
+angular.module("comeApp", ["lumx"]);

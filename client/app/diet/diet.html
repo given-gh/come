@@ -1,34 +1,48 @@
-<div class="data-table-container" ng-controller="dietCtrl as dc">
-	<header class="data-table-header">
-		<div class="data-table-header__label">
-			<span id="cm" class="fs-title">Прием пищи</span>
-			<input type="checkbox" ng-model="dc.showDetails"/> Показывать детали
-		</div>
-	</header>
-	<table class="data-table">
-		<thead>
-			<tr>
-				<th ng-click=dc.sort('date')>Дата и время</th>
-				<th ng-click=dc.sort('name')>Наименование продукта</th>
-				<th ng-click=dc.sort('w')>Вес, гр.</th>
-				<th ng-click=dc.sort('proteins') ng-show="dc.showDetails">Белки</th>
-				<th ng-click=dc.sort('fats') ng-show="dc.showDetails">Жиры</th>
-				<th ng-click=dc.sort('carbohydrates') ng-show="dc.showDetails">Углеводы</th>
-				<th ng-click=dc.sort('gi') ng-show="dc.showDetails">ГИ</th>
-				<th ng-click=dc.sort('calories')>Калории</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in dc.meals | orderBy:dc.sortField:dc.reverse" ng-class="dc.evaluateMeal(row)">
-				<td><span ng-bind="row.date"></span><span ng-bind="row.time" ng-show="dc.showDetails"></span></td>
-				<td><span ng-bind="row.name"></span></td>
-				<td><span ng-bind="row.w"></span></td>
-				<td ng-show="dc.showDetails"><span ng-bind="row.proteins"></span></td>
-				<td ng-show="dc.showDetails"><span ng-bind="row.fats"></span></td>
-				<td ng-show="dc.showDetails"><span ng-bind="row.carbohydrates"></span></td>
-				<td ng-show="dc.showDetails"><span ng-bind="row.gi"></span></td>
-				<td><span ng-bind="row.calories"></span></td>
-			</tr>
-		</tbody>
-	</table>
+<div ng-controller="dietCtrl as dc">
+    <div flex-container="row">
+        <div class="card">
+            <div class="toolbar">
+                <span class="toolbar__label fs-title ml">Прием пищи</span>
+                <div class="toolbar__right">
+                    <button class="btn btn--l btn--black btn--icon" lx-ripple>
+                        <i class="mdi mdi-apps"></i>
+                    </button>
+                    <div class="checkbox">
+                        <input type="checkbox" id="checkbox1" ng-model="dc.showDetails" class="checkbox__input">
+                        <label for="checkbox1" class="checkbox__label">Показывать детали</label>
+                    </div>
+                    <lx-search-filter model="dc.filterByName" position="right" closed></lx-search-filter>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="data-table-container card">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th ng-click=dc.sort('date')>Дата и время</th>
+                    <th ng-click=dc.sort('name')>Наименование продукта</th>
+                    <th ng-click=dc.sort('w')>Вес, гр.</th>
+                    <th ng-click=dc.sort('proteins') ng-show="dc.showDetails">Белки</th>
+                    <th ng-click=dc.sort('fats') ng-show="dc.showDetails">Жиры</th>
+                    <th ng-click=dc.sort('carbohydrates') ng-show="dc.showDetails">Углеводы</th>
+                    <th ng-click=dc.sort('gi') ng-show="dc.showDetails">ГИ</th>
+                    <th ng-click=dc.sort('calories')>Калории</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in dc.meals | filter:{name: dc.filterByName} | orderBy:dc.sortField:dc.reverse" ng-class="dc.evaluateMeal(row)">
+                    <td><span ng-bind="row.date"></span><span ng-bind="row.time" ng-show="dc.showDetails"></span></td>
+                    <td><span ng-bind="row.name"></span></td>
+                    <td><span ng-bind="row.w"></span></td>
+                    <td ng-show="dc.showDetails"><span ng-bind="row.proteins"></span></td>
+                    <td ng-show="dc.showDetails"><span ng-bind="row.fats"></span></td>
+                    <td ng-show="dc.showDetails"><span ng-bind="row.carbohydrates"></span></td>
+                    <td ng-show="dc.showDetails"><span ng-bind="row.gi"></span></td>
+                    <td><span ng-bind="row.calories"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
