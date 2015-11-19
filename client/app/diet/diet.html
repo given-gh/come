@@ -2,6 +2,7 @@
     <div flex-container="row">
         <div class="toolbar bgc-blue-900" style="width: 100%">
             <span class="toolbar__label fs-title  tc-white-1 ml">Прием пищи</span>
+            <button class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi-plus"></i></button>
             <div class="toolbar__right">
                 <lx-search-filter model="dc.filterByName" position="right" theme="dark" filter-width="600px" closed placeholder="Поиск по наименованию продукта"></lx-search-filter>
                 <div class="checkbox">
@@ -27,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in dc.meals | filter:{name: dc.filterByName} | orderBy:dc.sortField:dc.reverse" ng-class="dc.evaluateMeal(row)">
+                <tr ng-repeat="row in dc.meals | filter:{name: dc.filterByName} | orderBy:dc.sortField:dc.reverse" ng-class="dc.evaluateMeal(row)" ng-click="dc.edit(row)">
                     <td><span ng-bind="row.date"></span><span ng-bind="row.time" ng-show="dc.showDetails"></span></td>
                     <td><span ng-bind="row.name"></span></td>
                     <td><span ng-bind="row.w"></span></td>
@@ -39,5 +40,43 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div flex-container="row" flex-gutter="24" ng-if="dc.currentMeal != null">
+        <div flex-item>
+            <div class="card">
+                <div class="p+">
+                    <span class="fs-subhead tc-black-2 display-block">Редактирование приема пищи</span>
+                    <div class="paragraph fs-body-1">
+                        <select 
+                            ng-options="refMeal.name as refMeal.name for refMeal in dc.refMeals" 
+                            ng-model="dc.currentMeal.name">
+                        </select>
+                        <lx-text-field label="Вес, гр.">
+                            <input type="text" ng-model="dc.currentMeal.w">
+                        </lx-text-field>
+                        <lx-text-field label="Белки, гр.">
+                            <input type="text" ng-model="dc.currentMeal.proteins">
+                        </lx-text-field>
+                        <lx-text-field label="Жиры, гр.">
+                            <input type="text" ng-model="dc.currentMeal.fats">
+                        </lx-text-field>
+                        <lx-text-field label="Углеводы, гр.">
+                            <input type="text" ng-model="dc.currentMeal.carbohydrates">
+                        </lx-text-field>
+                        <lx-text-field label="ГИ">
+                            <input type="text" ng-model="dc.currentMeal.gi">
+                        </lx-text-field>
+                        <lx-text-field label="Калории">
+                            <input type="text" ng-model="dc.currentMeal.calories">
+                        </lx-text-field>
+                    </div>
+                </div>
+                <div class="card__actions">
+                    <button class="btn btn--m btn--black btn--flat" lx-ripple ng-click="dc.save()">Сохранить</button>
+                    <button class="btn btn--m btn--orange btn--flat" lx-ripple ng-click="dc.cancel()">Отменить</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
